@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
+from django.contrib.auth.models import User
 from .models import *
 
 
@@ -161,18 +162,39 @@ def delete_student(request):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
 
-        user = auth.authenticate(username=username, password=password)
+        user = None
+        account = User.objects.filter(email=email).first()
+        if account is not None:
+            user = auth.authenticate(username=account.username, password=password)
 
         if user is not None:
             auth.login(request, user)
             return redirect('/')
         else:
-            messages.error(request, 'Invalid username or password')
+            messages.error(request, 'Invalid email or password')
 
     return render(request, 'login.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already taken')
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered')
+        else:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            auth.login(request, user)
+            return redirect('/')
+
+    return render(request, 'register.html')
 
 
 def logout(request):
