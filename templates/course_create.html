@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Course</h2>
+
+<form method="post" action="/create-course/">
+    {% csrf_token %}
+    <p><input type="text" name="name" placeholder="Name" required></p>
+    <p><input type="text" name="code" placeholder="Code" required></p>
+    <p><textarea name="description" rows="3" placeholder="Description" required></textarea></p>
+    <button type="submit">Save</button>
+    <a href="{% url 'courses' %}">Cancel</a>
+</form>
+{% endblock %}

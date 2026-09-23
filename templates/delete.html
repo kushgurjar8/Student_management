@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Delete Student</h2>
+
+<form method="post" action="/delete-student/">
+    {% csrf_token %}
+    <p><input type="number" name="id" placeholder="Student ID" required></p>
+    <button type="submit">Delete</button>
+    <a href="/students/">Back to list</a>
+</form>
+{% endblock %}

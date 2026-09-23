@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Student</h2>
+
+<form method="post" action="/update-student/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p><input type="number" name="id" placeholder="Student ID" required></p>
+    <p><input type="text" name="name" placeholder="Name" required></p>
+    <p><input type="text" name="roll_no" placeholder="Roll No" required></p>
+    <p>
+        <select name="course_id" required>
+            <option value="">Select course</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p><input type="number" name="semester_id" placeholder="Semester ID" required></p>
+    <p><input type="date" name="date_of_birth" required></p>
+    <p><input type="text" name="contact" placeholder="Contact" required></p>
+    <p><textarea name="address" rows="3" placeholder="Address" required></textarea></p>
+    <p><input type="file" name="photo" required></p>
+    <button type="submit">Update</button>
+    <a href="/students/">Cancel</a>
+</form>
+{% endblock %}

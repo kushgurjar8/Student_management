@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Student Management Dashboard</h1>
+    <p>Track students, courses, semesters and subjects in one place.</p>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>{{ students|length }}</h3>
+        <p>Students</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ semesters|length }}</h3>
+        <p>Semesters</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ courses|length }}</h3>
+        <p>Courses</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ subjects|length }}</h3>
+        <p>Subjects</p>
+    </div>
+</div>
+
+<p class="link-row">
+    <a class="btn" href="{% url 'student_list' %}">View all students →</a>
+</p>
+{% endblock %}

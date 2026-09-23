@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Delete Course</h2>
+
+<form method="post" action="/delete-course/">
+    {% csrf_token %}
+    <p><input type="number" name="id" placeholder="Course ID" required></p>
+    <button type="submit">Delete</button>
+    <a href="{% url 'courses' %}">Back to list</a>
+</form>
+{% endblock %}

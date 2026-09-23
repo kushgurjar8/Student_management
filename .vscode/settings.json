@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\KUSH\\Desktop\\django_pro2\\myenv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "C:\\Users\\KUSH\\Desktop\\django_pro2\\myenv\\Lib\\site-packages"
+    ],
+    "liveServer.settings.port": 5501
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ student.name }}</h2>
+
+<div class="detail">
+    {% if student.photo %}
+        <img src="{{ student.photo.url }}" alt="{{ student.name }}">
+    {% endif %}
+
+    <ul>
+        <li><strong>Roll No</strong> {{ student.roll_no }}</li>
+        <li><strong>Semester</strong> {{ student.semester_id|default:"-" }}</li>
+        <li><strong>Date of Birth</strong> {{ student.date_of_birth|default:"-" }}</li>
+        <li><strong>Contact</strong> {{ student.contact|default:"-" }}</li>
+        <li><strong>Address</strong> {{ student.address|default:"-" }}</li>
+    </ul>
+</div>
+
+<div class="detail-actions">
+    <a class="btn" href="{% url 'update' %}">Edit</a>
+    <a class="btn btn-outline" href="{% url 'student_list' %}">Back to list</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Course</h2>
+
+<form method="post" action="/update-course/">
+    {% csrf_token %}
+    <p><input type="number" name="id" placeholder="Course ID" required></p>
+    <p><input type="text" name="name" placeholder="Name" required></p>
+    <p><input type="text" name="code" placeholder="Code" required></p>
+    <p><textarea name="description" rows="3" placeholder="Description" required></textarea></p>
+    <button type="submit">Update</button>
+    <a href="{% url 'courses' %}">Cancel</a>
+</form>
+{% endblock %}
